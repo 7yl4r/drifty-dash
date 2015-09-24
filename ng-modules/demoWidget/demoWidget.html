@@ -9,7 +9,13 @@
                     Wavelength
                 </td>
                 <td>
+                    (λ)
+                </td>
+                <td>
                     <input type="number" ng-model="wavelength" ng-change="updateWavelength(true)"/>
+                </td>
+                <td>
+                    Å
                 </td>
             </tr>
             <tr>
@@ -17,7 +23,13 @@
                     Wave Vector
                 </td>
                 <td>
+                    (k)
+                </td>
+                <td>
                     <input type="number" ng-model="waveVector" ng-change="updateWaveVector(true)"/> <br>
+                </td>
+                <td>
+                    1/Å
                 </td>
             </tr>
             <tr>
@@ -25,7 +37,13 @@
                     Frequency
                 </td>
                 <td>
+                    (f)
+                </td>
+                <td>
                     <input type="number" ng-model="frequency" ng-change="updateFreq(true)" /><br>
+                </td>
+                <td>
+                    THz
                 </td>
             </tr>
             <tr>
@@ -33,7 +51,13 @@
                     Wavenumber
                 </td>
                 <td>
+                    (ν)
+                </td>
+                <td>
                     <input type="number" ng-model="wavenumber" ng-change="updateWavenumber(true)"/> <br>
+                </td>
+                <td>
+                    1/cm
                 </td>
             </tr>
             <tr>
@@ -41,7 +65,13 @@
                     Velocity
                 </td>
                 <td>
+                    (v)
+                </td>
+                <td>
                     <input type="number" ng-model="velocity" ng-change="updateVelocity(true)"/> <br>
+                </td>
+                <td>
+                    km/s
                 </td>
             </tr>
             <tr>
@@ -49,7 +79,13 @@
                     Temperature
                 </td>
                 <td>
+                    (T)
+                </td>
+                <td>
                     <input type="number" ng-model="temperature" ng-change="updateTemperature(true)"/> <br>
+                </td>
+                <td>
+                    K
                 </td>
             </tr>
             <tr>
@@ -57,14 +93,20 @@
                     Energy
                 </td>
                 <td>
+                    (E)
+                </td>
+                <td>
                     <input type="number" ng-model="energy" ng-change="updateEnergy(true)"/> <br>
+                </td>
+                <td>
+                    meV
                 </td>
             </tr>
         </table>
 
         <!--
             TODO:
-            Wavelength  -> lambda[angstroms] = 9.044 / np.sqrt(E[meV])
+            Wavelength  ->  [angstroms] = 9.044 / np.sqrt(E[meV])
             Wave vector -> k[angstroms^-1] = 2*np.pi/lambda[angstroms]
             Frequency   -> nu[THz] = 0.2418*E[meV]
             Wavenumber  -> nu[cm-1] = nu[Hz] / (2.998 * 10^10 cm/s)
