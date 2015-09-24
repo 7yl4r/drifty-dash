@@ -4,13 +4,13 @@
     </div>
     <div class="panel-body">
         <form novalidate class="simple-form">
-            Wavelength  <input type="number" ng-model="wavelength" ng-change="updateWavelength()"/> <br>
-            Wave Vector <input type="number" ng-model="waveVector" ng-change="updateWaveVector()"/> <br>
-            Frequency   <input type="number" ng-model="frequency" ng-change="updateFreq()" /><br>
-            Wavenumber  <input type="number" ng-model="wavenumber" ng-change="updateWavenumber()"/> <br>
-            Velocity    <input type="number" ng-model="velocity" ng-change="updateVelocity()"/> <br>
-            Temperature <input type="number" ng-model="temperature" ng-change="updateTemperature()"/> <br>
-            Energy      <input type="number" ng-model="energy" ng-change="updateEnergy()"/> <br>
+            Wavelength  <input type="number" ng-model="wavelength" ng-change="updateWavelength(true)"/> <br>
+            Wave Vector <input type="number" ng-model="waveVector" ng-change="updateWaveVector(true)"/> <br>
+            Frequency   <input type="number" ng-model="frequency" ng-change="updateFreq(true)" /><br>
+            Wavenumber  <input type="number" ng-model="wavenumber" ng-change="updateWavenumber(true)"/> <br>
+            Velocity    <input type="number" ng-model="velocity" ng-change="updateVelocity(true)"/> <br>
+            Temperature <input type="number" ng-model="temperature" ng-change="updateTemperature(true)"/> <br>
+            Energy      <input type="number" ng-model="energy" ng-change="updateEnergy(true)"/> <br>
         </form>
 
         <!--

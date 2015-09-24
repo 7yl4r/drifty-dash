@@ -4,60 +4,106 @@
 
 angular.module('demoWidget', [])
     .controller('demoWidgetController', ['$scope', function($scope) {
-
+        // TODO: this hack is a mess. Should use keys to lookup values in boolean updated dict and numeric values dict
+        // TODO:      instead of hard-coded keys in updated and bare vars for values.
+        $scope.updated = {  // used to track if values have been updated since last user input
+            wavelength:false,
+            waveVector:false,
+            frequency:false,
+            wavenumber:false,
+            velocity:false,
+            temperature:false,
+            energy:false
+        };
         /*
-         TODO:
-         Wavelength  -> lambda[angstroms] = 9.044 / np.sqrt(E[meV])
-         Wave vector -> k[angstroms^-1] = 2*np.pi/lambda[angstroms]
-         Frequency   -> nu[THz] = 0.2418*E[meV]
-         Wavenumber  -> nu[cm-1] = nu[Hz] / (2.998 * 10^10 cm/s)
-         Velocity    -> v[km/s] = 0.6302 k[angstroms^-1]
-         Temperature -> T[K] = 11.605 * E[meV]
-         Energy      -> E[meV] = 2.072*k^2 [angstroms^-1]
 
-         lambda = 9.044 / sqrt(E)
-         k      = 2*PI / lambda
-         nu_f   = .2418 * E
-         nu_w   = nu_f*1000000000000 / (2.998 * 10^10)
-         nu_v   = 0.6302 * k
-         T      = 11.605 * E
-         E      = 2.072 * k * k
+         Wavelength  = 9.044 / sqrt(Energy)
+         WaveVector  = 2*PI / Wavelength
+         Frequency   = .2418 * Energy
+         Wavenumber  = Frequency*1000000000000 / (2.998 * 10^10)
+         Velocity    = 0.6302 * WaveVector
+         Temperature = 11.605 * Energy
+         Energy      = 2.072 * WaveVector * WaveVector
+
+         Frequency   = .2418 * Energy
+         Wavenumber  = Frequency*1000000000000 / (2.998 * 10^10)
+         Velocity    = 0.6302 * WaveVector
+         Temperature = 11.605 * Energy
+         Energy      = 2.072 * WaveVector * WaveVector
          */
 
-        $scope.updateWavelength = function() {
-            console.log('update wavelen')
-            $scope.waveVector = 2*Math.PI / $scope.wavelength
-            console.log('wavelen=' + $scope.wavelength)
-            console.log('waveVector=' + $scope.waveVector)
+        $scope._updateState = function(user_triggered){
+            if (user_triggered){
+                // reset updated states
+                $scope.updated = {
+                    wavelength:false,
+                    waveVector:false,
+                    frequency:false,
+                    wavenumber:false,
+                    velocity:false,
+                    temperature:false,
+                    energy:false
+                };
+            }
         };
 
-        /*
-        $scope.updateWavelength = function(){
+        $scope.updateWavelength = function(user_triggered) {
+            $scope._updateState(user_triggered);
+            $scope.updated.wavelength=true;
+            //console.log('update wavelen')
 
+            if (!$scope.updated.waveVector) {
+                // WaveVector  = 2*PI / Wavelength
+                $scope.waveVector = 2 * Math.PI / $scope.wavelength;
+                $scope.updateWaveVector();
+            }
+
+            //  Energy = (9.044 / Wavelength)^2
+            if (!$scope.updated.energy){
+                $scope.energy = (9.044 / $scope.wavelength);
+                $scope.energy *= $scope.energy;
+                $scope.updateEnergy()
+            }
+        };
+
+        $scope.updateWaveVector = function(user_triggered){
+            $scope._updateState(user_triggered);
+            $scope.updated.wavevector=true;
+
+            if (!$scope.updated.wavelength) {
+                //  Wavelength = 2*PI / WaveVector
+                $scope.wavelength = 2 * Math.PI / $scope.waveVector;
+                $scope.updateWavelength();
+            }
+        };
+
+        $scope.updateFreq = function(user_triggered){
+            $scope._updateState(user_triggered);
+
+        };
+        $scope.updateWavenumber = function(user_triggered){
+            $scope._updateState(user_triggered);
+
+        };
+        $scope.updateVelocity = function(user_triggered){
+            $scope._updateState(user_triggered);
+
+        };
+        $scope.updateTemperature = function(user_triggered){
+            $scope._updateState(user_triggered);
+
+        };
+        $scope.updateEnergy = function(user_triggered){
+            $scope._updateState(user_triggered);
+            $scope.updated.energy = true;
+
+            if (!$scope.updated.wavelength){
+                // Wavelength  = 9.044 / sqrt(Energy)
+                $scope.wavelength = 9.044 / Math.sqrt($scope.energy);
+                $scope.updateWavelength();
+            }
         }
-
-        $scope.updateWaveVector = function(){
-
-        }
-        $scope.updateFreq = function(){
-
-        }
-        $scope.updateWavenumber = function(){
-
-        }
-        $scope.updateVelocity = function(){
-
-        }
-        $scope.updateTemperature = function(){
-
-        }
-        $scope.updateEnergy = function(){
-
-        }
-        */
-
     }])
-
    .directive("demoWidget", function() {
     return {
         restrict: 'E',
