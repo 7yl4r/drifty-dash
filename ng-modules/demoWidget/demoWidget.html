@@ -1,17 +1,66 @@
-<div class='col-md-6 panel panel-default' ng-controller="demoWidgetController as demoCtrl">
+<div class='col-md-6 panel panel-default demo-widget' ng-controller="demoWidgetController as demoCtrl">
     <div class="panel-heading">
         <h3 class="panel-title">Demo Widget #1</h3>
     </div>
     <div class="panel-body">
-        <form novalidate class="simple-form">
-            Wavelength  <input type="number" ng-model="wavelength" ng-change="updateWavelength(true)"/> <br>
-            Wave Vector <input type="number" ng-model="waveVector" ng-change="updateWaveVector(true)"/> <br>
-            Frequency   <input type="number" ng-model="frequency" ng-change="updateFreq(true)" /><br>
-            Wavenumber  <input type="number" ng-model="wavenumber" ng-change="updateWavenumber(true)"/> <br>
-            Velocity    <input type="number" ng-model="velocity" ng-change="updateVelocity(true)"/> <br>
-            Temperature <input type="number" ng-model="temperature" ng-change="updateTemperature(true)"/> <br>
-            Energy      <input type="number" ng-model="energy" ng-change="updateEnergy(true)"/> <br>
-        </form>
+        <table>
+            <tr>
+                <td>
+                    Wavelength
+                </td>
+                <td>
+                    <input type="number" ng-model="wavelength" ng-change="updateWavelength(true)"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Wave Vector
+                </td>
+                <td>
+                    <input type="number" ng-model="waveVector" ng-change="updateWaveVector(true)"/> <br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Frequency
+                </td>
+                <td>
+                    <input type="number" ng-model="frequency" ng-change="updateFreq(true)" /><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Wavenumber
+                </td>
+                <td>
+                    <input type="number" ng-model="wavenumber" ng-change="updateWavenumber(true)"/> <br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Velocity
+                </td>
+                <td>
+                    <input type="number" ng-model="velocity" ng-change="updateVelocity(true)"/> <br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Temperature
+                </td>
+                <td>
+                    <input type="number" ng-model="temperature" ng-change="updateTemperature(true)"/> <br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Energy
+                </td>
+                <td>
+                    <input type="number" ng-model="energy" ng-change="updateEnergy(true)"/> <br>
+                </td>
+            </tr>
+        </table>
 
         <!--
             TODO:
