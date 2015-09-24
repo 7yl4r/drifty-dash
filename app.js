@@ -1,7 +1,7 @@
 require('angular');
 
 /* global FastClick, smoothScroll */
-var app = angular.module('drifty-dashboard',
+var app = angular.module('drifty-dash',
     [
         require('ui.bootstrap')
     ]

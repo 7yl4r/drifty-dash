@@ -27,6 +27,6 @@
     },
     "browser":{
         "angular": "./node_modules/angular/angular.min.js",
-        "ui.bootstrap": "./node_modules/angular-bootstrap/dist/ui-bootstrap.min.js"
+        "ui.bootstrap": "./node_modules/angular-bootstrap/ui-bootstrap.min.js"
     }
 }
