@@ -1,0 +1,36 @@
+<div class='col-md-6 panel panel-default' ng-controller="demoWidgetController as demoCtrl">
+    <div class="panel-heading">
+        <h3 class="panel-title">Demo Widget #1</h3>
+    </div>
+    <div class="panel-body">
+        <form novalidate class="simple-form">
+            Wavelength  <input type="number" ng-model="wavelength" ng-change="updateWavelength()"/> <br>
+            Wave Vector <input type="number" ng-model="waveVector" ng-change="updateWaveVector()"/> <br>
+            Frequency   <input type="number" ng-model="frequency" ng-change="updateFreq()" /><br>
+            Wavenumber  <input type="number" ng-model="wavenumber" ng-change="updateWavenumber()"/> <br>
+            Velocity    <input type="number" ng-model="velocity" ng-change="updateVelocity()"/> <br>
+            Temperature <input type="number" ng-model="temperature" ng-change="updateTemperature()"/> <br>
+            Energy      <input type="number" ng-model="energy" ng-change="updateEnergy()"/> <br>
+        </form>
+
+        <!--
+            TODO:
+            Wavelength  -> lambda[angstroms] = 9.044 / np.sqrt(E[meV])
+            Wave vector -> k[angstroms^-1] = 2*np.pi/lambda[angstroms]
+            Frequency   -> nu[THz] = 0.2418*E[meV]
+            Wavenumber  -> nu[cm-1] = nu[Hz] / (2.998 * 10^10 cm/s)
+            Velocity    -> v[km/s] = 0.6302 k[angstroms^-1]
+            Temperature -> T[K] = 11.605 * E[meV]
+            Energy      -> E[meV] = 2.072*k^2 [angstroms^-1]
+
+            lambda = 9.044 / sqrt(E)
+            k      = 2*PI / lambda
+            nu_f   = .2418 * E
+            nu_w   = nu_f*1000000000000 / (2.998 * 10^10)
+            nu_v   = 0.6302 * k
+            T      = 11.605 * E
+            E      = 2.072 * k * k
+        -->
+
+    </div>
+</div> <!-- demoWidget -->

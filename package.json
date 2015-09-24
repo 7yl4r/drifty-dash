@@ -1,6 +1,6 @@
 {
     "name": "drifty-dash",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Drifty's dashboard.",
     "dependencies": {
         "coffee-script": "~1.4.0",
@@ -27,6 +27,8 @@
     },
     "browser":{
         "angular": "./node_modules/angular/angular.min.js",
-        "ui.bootstrap": "./node_modules/angular-bootstrap/ui-bootstrap.min.js"
+        "ui.bootstrap": "./node_modules/angular-bootstrap/ui-bootstrap.min.js",
+
+        "demo-widget": "./ng-modules/demoWidget/demoWidget.js"
     }
 }
