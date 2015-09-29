@@ -1,8 +1,12 @@
 /**
  * Created by tylar on 9/23/15.
  */
+ 
+SysEqController = require('./SysEqController.coffee');
 
-angular.module('demoWidget', [])
+
+angular.module('demoWidget', [
+])
     .controller('demoWidgetController', ['$scope', function($scope) {
         // TODO: this hack is a mess. Should use keys to lookup values in boolean updated dict and numeric values dict
         // TODO:      instead of hard-coded keys in updated and bare vars for values.
@@ -15,6 +19,19 @@ angular.module('demoWidget', [])
             temperature:false,
             energy:false
         };
+        
+        sysEq = new SysEqController({
+            'wavelength': [
+                function(){  
+                    energy = get('energy'); // <- that MUST match another variable key
+                    return 9.044 / Math.sqrt(energy)
+                },
+                function(){
+                    energy = get('waveVector');
+                    return 2*Math.PI / waveVector
+                }
+            ]
+        });
 
         /*
          Wavelength  = 9.044 / sqrt(Energy)
