@@ -43,6 +43,7 @@ module.exports = class SysEqController
 
     update: (var_key, newValue)->
         # updates given var with given value and updates all dependent values in the system of eq.
+        # for making changes from code directly.
         @updated = (false for key in @updated)
         @_update(var_key, newValue)
         
@@ -50,7 +51,17 @@ module.exports = class SysEqController
         # get value of a variable
         return @values[key]
         
+    change: (key) ->
+        # triggerable method which makes assumptions about html document to get the value for the given var key.
+        # assumes variable value is stored in DOM with id "sys-eq-varname". variable names with caps will be toLowerCase()ed,
+        # since html id must be lowercase; otherwise should match var key exactly.
+        newVal = parseFloat( document.getElementById(_getElementName(key)).value )
+        update(key, newval)
+        
     # === PRIVATE METHODS ===
+    
+    _getElementName: (key)->
+        return 'sys-eq-' + key.toLowerCase()
         
     _update: (var_key, newValue)
         # used to update a single variable (not for calling from UI)
