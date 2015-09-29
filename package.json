@@ -38,7 +38,7 @@
         "demo-widget": "./ng-modules/demoWidget/demoWidget.js"
     },
     "scripts": {
-        "pretest": "./node_modules/.bin/coffeelint -r components",
+        "pretest": "./node_modules/.bin/coffeelint -r ng-modules",
         "test": "./node_modules/.bin/mocha --compilers coffee:coffee-script/register test/*.test.coffee"
     }
 }
