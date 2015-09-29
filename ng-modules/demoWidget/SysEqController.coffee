@@ -1,16 +1,17 @@
-# A non-clever system of equations controller. 
+# A non-clever system of equations controller.
 #
-# This doesn't solve systems, it doesn't check your work, 
-# it won't even complain if you input an impossible system. 
+# This doesn't solve systems, it doesn't check your work,
+# it won't even complain if you input an impossible system.
 #
 # It just takes your equations and pushes any changes you make
-# to one variable through the system once. 
+# to one variable through the system once.
 #
 # Useful for making interactive forms.
 
 module.exports = class SysEqController
     constructor: (variables)->
-        # sets up system of equation using given variable definition object in the form:
+        # sets up system of equation using given variable 
+        # definition object in the form:
         # variables = {
         #    "var-1-name": [
         #        "VAR-2": function(variable1){
@@ -34,7 +35,7 @@ module.exports = class SysEqController
         
         @sysEq = variables
         @values = {}  # dict for variable values
-        @updated = {}  # dict to track if var has been updated since last user input
+        @updated = {}  # dict to track if var updated since user input
         
         for key of variables
             @values[key] = 0
@@ -42,7 +43,8 @@ module.exports = class SysEqController
         
 
     update: (var_key, newValue)->
-        # updates given var with given value and updates all dependent values in the system of eq.
+        # updates given var with given value and updates all dependent 
+        # values in the system of eq.
         # for making changes from code directly.
         @updated = (false for key in @updated)
         @_update(var_key, newValue)
@@ -52,8 +54,10 @@ module.exports = class SysEqController
         return @values[key]
         
     change: (key) ->
-        # triggerable method which makes assumptions about html document to get the value for the given var key.
-        # assumes variable value is stored in DOM with id "sys-eq-varname". variable names with caps will be toLowerCase()ed,
+        # triggerable method which makes assumptions about html document to 
+        # get the value for the given var key.
+        # assumes variable value is stored in DOM with id "sys-eq-varname".
+        # variable names with caps will be toLowerCase()ed,
         # since html id must be lowercase; otherwise should match var key exactly.
         newVal = parseFloat( document.getElementById(_getElementName(key)).value )
         update(key, newval)
@@ -63,7 +67,7 @@ module.exports = class SysEqController
     _getElementName: (key)->
         return 'sys-eq-' + key.toLowerCase()
         
-    _update: (var_key, newValue)
+    _update: (var_key, newValue) -> 
         # used to update a single variable (not for calling from UI)
         @values[var_key] = newValue
         @updated[var_key] = true
