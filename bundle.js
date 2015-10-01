@@ -66,6 +66,7 @@ module.exports = SysEqController = (function() {
     results = [];
     for (dependency_key in this.sysEq[var_key]) {
       if (!this.updated[dependency_key]) {
+        console.log('updating ' + dependency_key + ' via ' + var_key);
         results.push(this._update(dependency_key, this.sysEq[var_key][dependency_key](newValue)));
       } else {
         results.push(void 0);

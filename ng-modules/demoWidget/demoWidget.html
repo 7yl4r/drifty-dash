@@ -27,7 +27,7 @@
                     (k)
                 </td>
                 <td>
-                    <input id="sys-eq-wavevector" type="number" ng-model="waveVector" ng-change="sysEq.change('waveVector')"/> <br>
+                    <input id="sys-eq-wavevector" type="number" ng-model="sysEq.values['waveVector']" ng-change="sysEq.change('waveVector')"/> <br>
                 </td>
                 <td>
                     1/Å
@@ -41,7 +41,7 @@
                     (f)
                 </td>
                 <td>
-                    <input id="sys-eq-frequency" type="number" ng-model="frequency" ng-change="sysEq.change('frequency')" /><br>
+                    <input id="sys-eq-frequency" type="number" ng-model="sysEq.values['frequency']" ng-change="sysEq.change('frequency')" /><br>
                 </td>
                 <td>
                     THz
@@ -55,7 +55,7 @@
                     (ν)
                 </td>
                 <td>
-                    <input id="sys-eq-wavenumber" type="number" ng-model="wavenumber" ng-change="sysEq.change('wavenumber')"/> <br>
+                    <input id="sys-eq-wavenumber" type="number" ng-model="sysEq.values['wavenumber']" ng-change="sysEq.change('wavenumber')"/> <br>
                 </td>
                 <td>
                     1/cm
@@ -69,7 +69,7 @@
                     (v)
                 </td>
                 <td>
-                    <input id='sys-eq-velocity' type="number" ng-model="velocity" ng-change="sysEq.change('velocity')"/> <br>
+                    <input id='sys-eq-velocity' type="number" ng-model="sysEq.values['velocity']" ng-change="sysEq.change('velocity')"/> <br>
                 </td>
                 <td>
                     km/s
@@ -83,7 +83,7 @@
                     (T)
                 </td>
                 <td>
-                    <input id='sys-eq-temperature' type="number" ng-model="temperature" ng-change="sysEq.change('temperature')"/> <br>
+                    <input id='sys-eq-temperature' type="number" ng-model="sysEq.values['temperature']" ng-change="sysEq.change('temperature')"/> <br>
                 </td>
                 <td>
                     K
@@ -97,7 +97,7 @@
                     (E)
                 </td>
                 <td>
-                    <input id='sys-eq-energy' type="number" ng-model="energy" ng-change="sysEq.change('energy')"/> <br>
+                    <input id='sys-eq-energy' type="number" ng-model="sysEq.values['energy']" ng-change="sysEq.change('energy')"/> <br>
                 </td>
                 <td>
                     meV

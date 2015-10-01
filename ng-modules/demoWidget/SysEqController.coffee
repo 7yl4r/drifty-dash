@@ -76,6 +76,7 @@ module.exports = class SysEqController
         @updated[var_key] = true
         for dependency_key of @sysEq[var_key]
             if not @updated[dependency_key]
+                #console.log('updating ' + dependency_key + ' via ' + var_key)
                 @_update(
                     dependency_key, 
                     @sysEq[var_key][dependency_key](newValue)
