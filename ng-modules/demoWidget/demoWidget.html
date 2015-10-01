@@ -12,7 +12,8 @@
                     (λ)
                 </td>
                 <td>
-                    <input type="number" ng-model="wavelength" ng-change="updateWavelength(true)"/>
+                    <!-- TDOO: could use ng directive here?: <sys-eq-input varname="wavelength"></sys-eq-input> -->
+                    <input id="sys-eq-wavelength" type="number" ng-model="sysEq.values['wavelength']" ng-change="sysEq.change('wavelength')"/>
                 </td>
                 <td>
                     Å
@@ -26,7 +27,7 @@
                     (k)
                 </td>
                 <td>
-                    <input type="number" ng-model="waveVector" ng-change="updateWaveVector(true)"/> <br>
+                    <input id="sys-eq-wavevector" type="number" ng-model="sysEq.values['waveVector']" ng-change="sysEq.change('waveVector')"/> <br>
                 </td>
                 <td>
                     1/Å
@@ -40,7 +41,7 @@
                     (f)
                 </td>
                 <td>
-                    <input type="number" ng-model="frequency" ng-change="updateFreq(true)" /><br>
+                    <input id="sys-eq-frequency" type="number" ng-model="sysEq.values['frequency']" ng-change="sysEq.change('frequency')" /><br>
                 </td>
                 <td>
                     THz
@@ -54,7 +55,7 @@
                     (ν)
                 </td>
                 <td>
-                    <input type="number" ng-model="wavenumber" ng-change="updateWavenumber(true)"/> <br>
+                    <input id="sys-eq-wavenumber" type="number" ng-model="sysEq.values['wavenumber']" ng-change="sysEq.change('wavenumber')"/> <br>
                 </td>
                 <td>
                     1/cm
@@ -68,7 +69,7 @@
                     (v)
                 </td>
                 <td>
-                    <input type="number" ng-model="velocity" ng-change="updateVelocity(true)"/> <br>
+                    <input id='sys-eq-velocity' type="number" ng-model="sysEq.values['velocity']" ng-change="sysEq.change('velocity')"/> <br>
                 </td>
                 <td>
                     km/s
@@ -82,7 +83,7 @@
                     (T)
                 </td>
                 <td>
-                    <input type="number" ng-model="temperature" ng-change="updateTemperature(true)"/> <br>
+                    <input id='sys-eq-temperature' type="number" ng-model="sysEq.values['temperature']" ng-change="sysEq.change('temperature')"/> <br>
                 </td>
                 <td>
                     K
@@ -96,7 +97,7 @@
                     (E)
                 </td>
                 <td>
-                    <input type="number" ng-model="energy" ng-change="updateEnergy(true)"/> <br>
+                    <input id='sys-eq-energy' type="number" ng-model="sysEq.values['energy']" ng-change="sysEq.change('energy')"/> <br>
                 </td>
                 <td>
                     meV
@@ -105,7 +106,7 @@
         </table>
 
         <!--
-            TODO:
+            TODO: show system of equations somewhere on UI
             Wavelength  ->  [angstroms] = 9.044 / np.sqrt(E[meV])
             Wave vector -> k[angstroms^-1] = 2*np.pi/lambda[angstroms]
             Frequency   -> nu[THz] = 0.2418*E[meV]
