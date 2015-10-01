@@ -58,8 +58,11 @@ module.exports = class SysEqController
         # get the value for the given var key.
         # assumes variable value is stored in DOM with id "sys-eq-varname".
         # variable names with caps will be toLowerCase()ed,
-        # since html id must be lowercase; otherwise should match var key exactly.
-        newVal = parseFloat( document.getElementById(_getElementName(key)).value )
+        # since html id must be lowercase; otherwise should match var key
+        # exactly.
+        newVal = parseFloat(document.getElementById(
+            _getElementName(key)
+        ).value)
         update(key, newval)
         
     # === PRIVATE METHODS ===

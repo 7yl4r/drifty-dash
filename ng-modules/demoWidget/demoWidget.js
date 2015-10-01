@@ -21,15 +21,15 @@ angular.module('demoWidget', [
         };
         
         $scope.sysEq = new SysEqController({
-            'wavelength': [
+            'wavelength': {
                 'energy': function(wavelength){  
                     return Math.pow( 9.044 / wavelength , 2)
                 },
                 'waveVector': function(wavelength){
                     return 2*Math.PI / wavelength
                 }
-            ],
-            'energy': [
+            },
+            'energy': {
                 'wavelength': function(energy){
                     return 9.044 / Math.sqrt(energy)
                 },
@@ -42,8 +42,8 @@ angular.module('demoWidget', [
                 'waveVector': function(energy){
                     return Math.sqrt(energy / 2.072)
                 }
-            ],
-            'waveVector': [
+            },
+            'waveVector': {
                 'wavelength': function(waveVector){
                     return 2*Math.PI / waveVector
                 },
@@ -53,30 +53,30 @@ angular.module('demoWidget', [
                 'energy': function(waveVector){
                     return 2.072 * waveVector*waveVector
                 }
-            ],
-            'frequency': [
+            },
+            'frequency': {
                 'energy': function(frequency){
                     return frequency/.2418
                 },
                 'wavenumber': function(frequency){
-                    return frequency*1000000000000 / (2.998 * Math.pow(10,10)
+                    return frequency*1000000000000 / (2.998 * Math.pow(10,10))
                 }
-            ],
-            'wavenumber': [
+            },
+            'wavenumber': {
                 'frequency': function(wavenumber){
-                    return (2.998 * Math.pow(10,10) * wavenumber / 1000000000000
+                    return (2.998 * Math.pow(10,10) * wavenumber / 1000000000000)
                 }
-            ],
-            'velocity': [
+            },
+            'velocity': {
                 'waveVector': function(freq){
                     return freq / .6302 
                 }
-            ],
-            'temperature': [
-                'energy': function(temp){
+            },
+            'temperature': {
+                'energy': function (temp) {
                     return temp / 11.605
                 }
-            ]
+            }
             
         });
 

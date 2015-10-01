@@ -15,7 +15,7 @@ describe('when running tests', ()->
         funkyShun({fake:'data'})
     )
     it('should be able to import component with require()', (done)->
-        c = require('../ng-modules/demoWidget')
+        c = require('../ng-modules/demoWidget/SysEqController.coffee')
         chai.expect(c).to.not.be.undefined
         done()
     )
