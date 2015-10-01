@@ -51,8 +51,8 @@ module.exports = SysEqController = (function() {
 
   SysEqController.prototype.change = function(key) {
     var newVal;
-    newVal = parseFloat(document.getElementById(_getElementName(key)).value);
-    return update(key, newval);
+    newVal = parseFloat(document.getElementById(this._getElementName(key)).value);
+    return this.update(key, newVal);
   };
 
   SysEqController.prototype._getElementName = function(key) {

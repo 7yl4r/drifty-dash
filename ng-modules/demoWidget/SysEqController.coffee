@@ -61,9 +61,9 @@ module.exports = class SysEqController
         # since html id must be lowercase; otherwise should match var key
         # exactly.
         newVal = parseFloat(document.getElementById(
-            _getElementName(key)
+            @_getElementName(key)
         ).value)
-        update(key, newval)
+        @update(key, newVal)
         
     # === PRIVATE METHODS ===
     
