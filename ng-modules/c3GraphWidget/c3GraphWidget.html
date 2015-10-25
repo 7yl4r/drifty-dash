@@ -5,12 +5,9 @@
     <div class="panel-body">
         <div class="row">
             <div class="col-md-3">
+                <series-panel></series-panel>
                 TODO: series-add/toggle
                 <div add-input>
-                    <button ng-click="selected='sample1'">line-graph example</button>
-                    <button ng-click="selected='sample2'">scatterplot example</button>
-                    <button ng-click="selected='energy-v-flux-graph'">energy/flux data</button>
-
                     <!--SERIES EDITOR: (data1)-->
                     <!--&lt;!&ndash; NOTE: this won't work b/c data-binding-->
                                 <!--does not convert text to back to array.-->
@@ -30,13 +27,9 @@
                     <!--<button>add new series</button>-->
                 </div>
             </div>
-            <div ng-init="selected='energy-v-flux-graph'" class="col-md-9">
-                <c3-chart ng-show="selected=='energy-v-flux-graph'"" id="energy-v-flux-graph" class="chart-toggle-group" data="data" axis="axis"></c3-chart>
-                <c3-chart ng-show="selected=='sample1'" id="sample1" class="chart-toggle-group" data="sampleData1" axis="sampleAxis1"></c3-chart>
-                <c3-chart ng-show="selected=='sample2'" id="sample2" class="chart-toggle-group" data="sampleData2" axis="sampleAxis2"></c3-chart>
+            <div class="col-md-9">
+                <c3-chart id="energy-v-flux-graph" class="chart-toggle-group" data="data" axis="axis"></c3-chart>
             </div>
         </div>
-
-
     </div>
 </div> <!-- end c3-graph-widget -->
