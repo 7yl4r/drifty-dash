@@ -1,48 +1,12 @@
-<div class="series-panel panel-group" id="accordion">
-    <div class="panel panel-default" id="panel1" ng-init="toggle=true">
-        <div class="panel-heading">
-            <h4 class="panel-title" >
-                <a ng-click="toggle = !toggle; toggleClass('collapsed')" >
-                    Collapsible Group Item #1
-                </a>
-            </h4>
+<div ng-init="oneAtATime = true">
+    <uib-accordion close-others="oneAtATime">
+        <div ng-repeat="seri in series" class="series-panel">
+            <uib-accordion-group heading="{{seri.instrument}}">
+                <textarea>{{seri}}</textarea>
+                <button ng-click="updateSeries(seri.instrument)">update series json</button>
+                <button ng-click="removeSeries(seri.instrument)">delete series</button>
+            </uib-accordion-group>
         </div>
-        <div id="collapseOne" class="panel-collapse collapse in" ng-show="toggle">
-            <div class="panel-body">
-                Anim pariatur cliche reprehenderit
-            </div>
-        </div>
-    </div>
-
-    <div class="panel panel-default" id="panel2">
-        <div class="panel-heading">
-            <h4 class="panel-title">
-                <a data-toggle="collapse" data-target="#collapseTwo"
-                   href="javascript:;" class="collapsed">
-                    Collapsible Group Item #2
-                </a>
-            </h4>
-        </div>
-        <div id="collapseTwo" class="panel-collapse collapse">
-            <div class="panel-body">
-                Anim pariatur clichele VHS.
-            </div>
-        </div>
-    </div>
-
-    <div class="panel panel-default" id="panel3">
-        <div class="panel-heading">
-            <h4 class="panel-title">
-                <a data-toggle="collapse" data-target="#collapseThree"
-                   href="javascript:;" class="collapsed">
-                    Collapsible Group Item #3
-                </a>
-            </h4>
-        </div>
-        <div id="collapseThree" class="panel-collapse collapse">
-            <div class="panel-body">
-                Anim pariatur HS.
-            </div>
-        </div>
-    </div>
+    </uib-accordion>
+    <button ng-click="addSeries()">add series</button>
 </div>

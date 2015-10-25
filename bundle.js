@@ -50,31 +50,31 @@ angular.module('c3GraphWidget', [
     require("ui.bootstrap")
 ])
     .controller('c3GraphWidgetController', ['$scope', function($scope) {
-         var json1 = {
-             "instrument": "neutron spectrometer 1",
-             "collimation": 80,
-             "collimation_units" : "minutes",
-             "aperture_w" : 0.5,
-             "aperture_h" : 0.5,
-             "aperture_units" : "inches",
-             "energy": [13.5, 30.5, 41, 60],
-             "energyUnits": "meV",
-             "flux": [1.69e7, 3.97e7, 5.17e7, 4.11e7],
-             "fluxUnits": "n/(cm**2 * s)"
-         }
-
-         var json3 = {
-             "instrument": "neutron spectrometer 3",
-             "collimation": 80,
-             "collimation_units" : "minutes ",
-             "aperture_w" : 0.5,
-             "aperture_h" : 0.5,
-             "aperture_units" : "inches",
-             "energy": [14.7, 30.5, 41, 60],
-             "energyUnits": "meV",
-             "flux": [1.63e7, 4.60e7, 6.07e7, 6.78e7],
-             "fluxUnits": "n/(cm**2 * s)"
-         }
+         $scope.series =[
+             {
+                 "instrument": "neutron spectrometer 1",
+                 "collimation": 80,
+                 "collimation_units" : "minutes",
+                 "aperture_w" : 0.5,
+                 "aperture_h" : 0.5,
+                 "aperture_units" : "inches",
+                 "energy": [13.5, 30.5, 41, 60],
+                 "energyUnits": "meV",
+                 "flux": [1.69e7, 3.97e7, 5.17e7, 4.11e7],
+                 "fluxUnits": "n/(cm**2 * s)"
+             },{
+                 "instrument": "neutron spectrometer 3",
+                 "collimation": 80,
+                 "collimation_units" : "minutes ",
+                 "aperture_w" : 0.5,
+                 "aperture_h" : 0.5,
+                 "aperture_units" : "inches",
+                 "energy": [14.7, 30.5, 41, 60],
+                 "energyUnits": "meV",
+                 "flux": [1.63e7, 4.60e7, 6.07e7, 6.78e7],
+                 "fluxUnits": "n/(cm**2 * s)"
+             }
+         ];
 
         // the real data
         $scope.data = {
@@ -84,10 +84,10 @@ angular.module('c3GraphWidget', [
             },
             // iris data from R
             columns: [
-                ["flux1"].concat(  json1.flux),
-                ["flux2"].concat(  json3.flux),
-                ["energy1"].concat(json1.energy),
-                ["energy2"].concat(json3.energy)
+                ["flux1"].concat(  $scope.series[0].flux),
+                ["flux2"].concat(  $scope.series[1].flux),
+                ["energy1"].concat($scope.series[0].energy),
+                ["energy2"].concat($scope.series[1].energy)
             ],
             type: 'scatter'
         };
@@ -107,7 +107,7 @@ angular.module('c3GraphWidget', [
         $scope.oneAtATime = true;
 
         $scope.addItem = function() {
-            var newItemNo = $scope.groups.length + 1;
+            var newItemNo = $scope.series.length + 1;
             //TODO
             //$scope.data....;
         };
