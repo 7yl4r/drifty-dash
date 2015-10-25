@@ -35,16 +35,14 @@ angular.module('c3GraphWidget', [
              }
          ];
 
-        // the real data
+        var XS = {};
+        XS[$scope.series[0].instrument] = 'energy1';
+        XS[$scope.series[1].instrument] = 'energy2';
         $scope.data = {
-            xs: {
-                flux1: 'energy1',
-                flux2: 'energy2'
-            },
-            // iris data from R
+            xs: XS,
             columns: [
-                ["flux1"].concat(  $scope.series[0].flux),
-                ["flux2"].concat(  $scope.series[1].flux),
+                [$scope.series[0].instrument].concat(  $scope.series[0].flux),
+                [$scope.series[1].instrument].concat(  $scope.series[1].flux),
                 ["energy1"].concat($scope.series[0].energy),
                 ["energy2"].concat($scope.series[1].energy)
             ],
