@@ -53,6 +53,41 @@
 			</div>
 			<c3-graph-widget></c3-graph-widget>
 		</div>
+        <div class="row">
+            <!-- ui-bootstrap test -->
+            <div>
+                <div ng-init="isCollapsed=false">
+                    <button ng-click="isCollapsed = !isCollapsed"> toggle collapse </button>
+                    <div uib-collapse="isCollapsed" >
+                        <div class="well well-lg">Some content</div>
+                    </div>
+                </div>
+
+                <div ng-init="groups = [
+                                {
+                                    title: 'Dynamic Group Header - 1',
+                                    content: 'Dynamic Group Body - 1'
+                                },
+                                {
+                                    title: 'Dynamic Group Header - 2',
+                                    content: 'Dynamic Group Body - 2'
+                                }
+                            ]">
+                    <uib-accordion-group heading="{{group.title}}" ng-repeat="group in groups">
+                        {{group.content}}
+                    </uib-accordion-group>
+
+                    <uib-accordion-group is-open="status.open">
+                        <uib-accordion-heading>
+                            I can have markup, too! <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+                        </uib-accordion-heading>
+                        This is just some content to illustrate fancy headings.
+                    </uib-accordion-group>
+                    </uib-accordion>
+                </div>
+            </div>
+            <!-- end ui-bootstrap test -->
+        </div>
     </div><!-- /.container -->
 
 </div><!-- /.main -->
