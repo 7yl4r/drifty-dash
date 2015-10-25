@@ -3,8 +3,40 @@
         <h3 class="panel-title">Graph Widget</h3>
     </div>
     <div class="panel-body">
+        <div class="row">
+            <div class="col-md-3">
+                TODO: series-add/toggle
+                <div add-input>
+                    <button ng-click="selected='sample1'">line-graph example</button>
+                    <button ng-click="selected='sample2'">scatterplot example</button>
+                    <button ng-click="selected='energy-v-flux-graph'">energy/flux data</button>
 
-        <c3-line data="[30, 200, 100]" label="revenue"></c3-line>
+                    <!--SERIES EDITOR: (data1)-->
+                    <!--&lt;!&ndash; NOTE: this won't work b/c data-binding-->
+                                <!--does not convert text to back to array.-->
+                    <!--<input type="text" ng-model="data.json.data1" />-->
+                    <!--&ndash;&gt;-->
+                    <!--<input type="number" ng-model="data.json.data1[0]" />-->
+                    <!--<input type="number" ng-model="data.json.data1[1]" />-->
+                    <!--<input type="number" ng-model="data.json.data1[2]" />-->
+                    <!--<input type="number" ng-model="data.json.data1[3]" />-->
+                    <!--<input type="number" ng-model="data.json.data1[4]" />-->
+                    <!--<input type="number" ng-model="data.json.data1[5]" />-->
+                    <!--&lt;!&ndash;-->
+                    <!--<br> SERIES CHECK: <br>-->
+                    <!--{{data}}-->
+                    <!--&ndash;&gt;-->
+                    <!--<br><br>-->
+                    <!--<button>add new series</button>-->
+                </div>
+            </div>
+            <div ng-init="selected='energy-v-flux-graph'" class="col-md-9">
+                <c3-chart ng-show="selected=='energy-v-flux-graph'"" id="energy-v-flux-graph" class="chart-toggle-group" data="data" axis="axis"></c3-chart>
+                <c3-chart ng-show="selected=='sample1'" id="sample1" class="chart-toggle-group" data="sampleData1" axis="sampleAxis1"></c3-chart>
+                <c3-chart ng-show="selected=='sample2'" id="sample2" class="chart-toggle-group" data="sampleData2" axis="sampleAxis2"></c3-chart>
+            </div>
+        </div>
+
 
     </div>
 </div> <!-- end c3-graph-widget -->
