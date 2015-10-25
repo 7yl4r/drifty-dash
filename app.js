@@ -4,7 +4,8 @@ require('angular');
 var app = angular.module('drifty-dash',
     [
         require('ui.bootstrap'),
-        require('demo-widget')
+        require('demo-widget'),
+        require('c3-graph-widget')
     ]
 );
 

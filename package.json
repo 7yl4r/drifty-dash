@@ -1,9 +1,9 @@
 {
     "name": "drifty-dash",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "Drifty's dashboard.",
     "dependencies": {
-
+        "c3-angularjs": "~1.0.4"
     },
     "devDependencies": {
         "chai": "^1.10.0",
@@ -29,13 +29,23 @@
         "ui.bootstrap": {
             "depends": "angular",
             "exports": "angular.module('ui.bootstrap').name"
+        },
+        "c3":{
+            "exports": "c3"
+        },
+        "c3-angularjs": {
+            "depends": ["c3", "angular"],
+            "exports": "angular.module('c3-angularjs').name"
         }
     },
     "browser":{
         "angular": "./node_modules/angular/angular.min.js",
         "ui.bootstrap": "./node_modules/angular-bootstrap/ui-bootstrap.min.js",
+        "c3": "./node_modules/c3-angularjs/node_modules/c3/c3.min.js",
+        "c3-angularjs": "./node_modules/c3-angularjs/c3-angular.js",
 
-        "demo-widget": "./ng-modules/demoWidget/demoWidget.js"
+        "demo-widget": "./ng-modules/demoWidget/demoWidget.js",
+        "c3-graph-widget": "./ng-modules/c3GraphWidget/c3GraphWidget.js"
     },
     "scripts": {
         "pretest": "./node_modules/.bin/coffeelint -f coffeelint.json -r ng-modules",
