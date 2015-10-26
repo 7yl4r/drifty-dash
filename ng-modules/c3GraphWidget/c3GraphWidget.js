@@ -35,40 +35,52 @@ angular.module('c3GraphWidget', [
              }
          ];
 
-        var XS = {};
-        XS[$scope.series[0].instrument] = 'energy1';
-        XS[$scope.series[1].instrument] = 'energy2';
-        $scope.data = {
-            xs: XS,
-            columns: [
-                [$scope.series[0].instrument].concat(  $scope.series[0].flux),
-                [$scope.series[1].instrument].concat(  $scope.series[1].flux),
-                ["energy1"].concat($scope.series[0].energy),
-                ["energy2"].concat($scope.series[1].energy)
-            ],
-            type: 'scatter'
-        };
+        var formatData = function() {
+            var XS = {};
+            var cols = [];
+            for (var i = 0; i < $scope.series.length; i++) {
+                var seri = $scope.series[i];
+                var energySeriesName = 'energy' + i;
 
-        $scope.axis = {
-            x: {
-                label: 'energy',
-                tick: {
-                    fit: false
-                }
-            },
-            y: {
-                label: 'flux'
+                XS[seri.instrument] = energySeriesName;
+                //XS[$scope.series[0].instrument] = 'energy1';
+                //XS[$scope.series[1].instrument] = 'energy2';
+
+
+                cols.push([seri.instrument].concat(seri.flux));
+                cols.push([energySeriesName].concat(seri.energy));
+                //[$scope.series[0].instrument].concat(  $scope.series[0].flux),
+                //[$scope.series[1].instrument].concat(  $scope.series[1].flux),
+                //["energy1"].concat($scope.series[0].energy),
+                //["energy2"].concat($scope.series[1].energy)
+
             }
-        };
+            //console.log(cols);
 
-        $scope.oneAtATime = true;
+            $scope.data = {
+                xs: XS,
+                columns: cols,
+                type: 'scatter'
+            };
+            $scope.axis = {
+                x: {
+                    label: 'energy',
+                    tick: {
+                        fit: false
+                    }
+                },
+                y: {
+                    label: 'flux'
+                }
+            };
+        };
+        formatData();  // init format data
 
         $scope.addItem = function() {
             var newItemNo = $scope.series.length + 1;
             //TODO
             //$scope.data....;
         };
-
     }])
    .directive("c3GraphWidget", function() {
     return {
