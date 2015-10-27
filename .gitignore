@@ -1,2 +1,11 @@
+# bundles only for dist
+bundle*
+
+# jetbrains stuff
 .idea/
+
+# npm modules
 node_modules/
+
+# ubuntu backups
+*~
