@@ -2,7 +2,7 @@
     <uib-accordion close-others="oneAtATime">
         <div ng-repeat="seri in series" class="series-panel">
             <uib-accordion-group heading="{{seri.instrument}}">
-                <textarea id="series-json-{{$index}}">{{seri}}</textarea>
+                <textarea id="series-json-{{$index}}">{{seri | json}}</textarea>
                 <button ng-click="updateSeries($index)">update series json</button>
                 <button ng-click="removeSeries($index)">delete series</button>
             </uib-accordion-group>
