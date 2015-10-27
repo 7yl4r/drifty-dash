@@ -3,6 +3,9 @@
  * Created by tylar on 2015-10-24
  */
 require("c3-angularjs");
+var format = require("d3-format").format;
+console.log(format);
+window.format = format;
 
 angular.module('c3GraphWidget', [
     "c3-angularjs",
@@ -53,6 +56,8 @@ angular.module('c3GraphWidget', [
             console.log("adding new series");
             $scope.series.push({
                  "instrument": "inst " + $scope.series.length,
+                  "energy": [],
+                  "flux": [],
             });
             formatData();
         }
@@ -92,7 +97,10 @@ angular.module('c3GraphWidget', [
                     }
                 },
                 y: {
-                    label: 'flux'
+                    label: 'flux',
+                    tick:{
+                        format: format(".2s")
+                    }
                 }
             };
         };
