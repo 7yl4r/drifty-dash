@@ -32,8 +32,6 @@ app.controller('MainCtrl', function () {
 
 require("c3-angularjs");
 var format = require("d3-format").format;
-console.log(format);
-window.format = format;
 
 angular.module('c3GraphWidget', ["c3-angularjs", require("ui.bootstrap")]).controller('c3GraphWidgetController', ['$scope', function ($scope) {
     $scope.series = [{
