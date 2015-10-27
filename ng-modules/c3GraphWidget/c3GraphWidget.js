@@ -35,6 +35,28 @@ angular.module('c3GraphWidget', [
              }
          ];
 
+        $scope.updateSeries = function(index){
+            console.log("update series #" + index);
+            var text = document.getElementById("series-json-"+index).value;
+            $scope.series[index] = JSON.parse(text);
+            formatData();
+        };
+
+        $scope.removeSeries = function(index){
+            console.log("del series #" + index);
+            delete $scope.series[index];  // frees memory?
+            $scope.series = $scope.series.slice(0,index).concat($scope.series.slice(index + 1));  // actual remove from array
+            formatData();
+        };
+
+        $scope.addSeries = function(){
+            console.log("adding new series");
+            $scope.series.push({
+                 "instrument": "inst " + $scope.series.length,
+            });
+            formatData();
+        }
+
         var formatData = function() {
             var XS = {};
             var cols = [];

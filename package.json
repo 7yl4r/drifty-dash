@@ -1,7 +1,8 @@
 {
     "name": "drifty-dash",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "description": "Drifty's dashboard.",
+    "repository": "https://github.com/7yl4r/drifty-dash",
     "dependencies": {
 
     },
