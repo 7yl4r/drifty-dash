@@ -4,8 +4,6 @@
  */
 require("c3-angularjs");
 var format = require("d3-format").format;
-console.log(format);
-window.format = format;
 
 angular.module('c3GraphWidget', [
     "c3-angularjs",
