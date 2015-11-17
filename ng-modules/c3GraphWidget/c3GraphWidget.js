@@ -3,6 +3,7 @@
  * Created by tylar on 2015-10-24
  */
 require("c3-angularjs");
+var format = require("d3-format").format;
 
 angular.module('c3GraphWidget', [
     "c3-angularjs",
@@ -37,6 +38,30 @@ angular.module('c3GraphWidget', [
 
         $scope.updateSeries = function(instrumentName){
 
+        };
+
+        $scope.updateSeries = function(index){
+            console.log("update series #" + index);
+            var text = document.getElementById("series-json-"+index).value;
+            $scope.series[index] = JSON.parse(text);
+            formatData();
+        };
+
+        $scope.removeSeries = function(index){
+            console.log("del series #" + index);
+            delete $scope.series[index];  // frees memory?
+            $scope.series = $scope.series.slice(0,index).concat($scope.series.slice(index + 1));  // actual remove from array
+            formatData();
+        };
+
+        $scope.addSeries = function(){
+            console.log("adding new series");
+            $scope.series.push({
+                 "instrument": "inst " + $scope.series.length,
+                  "energy": [],
+                  "flux": [],
+            });
+            formatData();
         };
 
         var updateData = function() {
@@ -76,7 +101,10 @@ angular.module('c3GraphWidget', [
                     }
                 },
                 y: {
-                    label: 'flux'
+                    label: 'flux',
+                    tick:{
+                        format: format(".2s")
+                    }
                 }
             };
         };

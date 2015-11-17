@@ -2,7 +2,7 @@
  * Created by tylar on 9/23/15.
  */
  
-SysEqController = require('./SysEqController.coffee');
+var SysEqController = require('./SysEqController.coffee');
 
 
 angular.module('demoWidget', [
