@@ -2,4 +2,16 @@
 
 .c3-graph-widget{
   @import "./seriesPanel";
+
+
+  .chart-toggle-group{
+    z-index:1;
+  }
+
+  .formula-overlay{  /* NOTE: this is actually an underlay */
+    position:absolute;
+    top: 220px;  /* TODO: these should maybe come from c3.css padding values? */
+    left: 250px;
+    z-index:0;
+  }
 }

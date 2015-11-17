@@ -6,28 +6,11 @@
         <div class="row">
             <div class="col-md-3">
                 <series-panel></series-panel>
-                TODO: series-add/toggle
-                <div add-input>
-                    <!--SERIES EDITOR: (data1)-->
-                    <!--&lt;!&ndash; NOTE: this won't work b/c data-binding-->
-                                <!--does not convert text to back to array.-->
-                    <!--<input type="text" ng-model="data.json.data1" />-->
-                    <!--&ndash;&gt;-->
-                    <!--<input type="number" ng-model="data.json.data1[0]" />-->
-                    <!--<input type="number" ng-model="data.json.data1[1]" />-->
-                    <!--<input type="number" ng-model="data.json.data1[2]" />-->
-                    <!--<input type="number" ng-model="data.json.data1[3]" />-->
-                    <!--<input type="number" ng-model="data.json.data1[4]" />-->
-                    <!--<input type="number" ng-model="data.json.data1[5]" />-->
-                    <!--&lt;!&ndash;-->
-                    <!--<br> SERIES CHECK: <br>-->
-                    <!--{{data}}-->
-                    <!--&ndash;&gt;-->
-                    <!--<br><br>-->
-                    <!--<button>add new series</button>-->
-                </div>
             </div>
             <div class="col-md-9">
+                <div class="formula-overlay">
+                    flux = energy^3/(exp(energy) - 1)
+                </div>
                 <c3-chart id="energy-v-flux-graph" class="chart-toggle-group" data="data" axis="axis"></c3-chart>
             </div>
         </div>

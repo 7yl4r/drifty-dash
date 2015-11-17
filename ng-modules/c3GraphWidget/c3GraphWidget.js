@@ -10,31 +10,49 @@ angular.module('c3GraphWidget', [
     require("ui.bootstrap")
 ])
     .controller('c3GraphWidgetController', ['$scope', function($scope) {
-         $scope.series =[
-             {
-                 "instrument": "neutron spectrometer 1",
-                 "collimation": 80,
-                 "collimation_units" : "minutes",
-                 "aperture_w" : 0.5,
-                 "aperture_h" : 0.5,
-                 "aperture_units" : "inches",
-                 "energy": [13.5, 30.5, 41, 60],
-                 "energyUnits": "meV",
-                 "flux": [1.69e7, 3.97e7, 5.17e7, 4.11e7],
-                 "fluxUnits": "n/(cm**2 * s)"
-             },{
-                 "instrument": "neutron spectrometer 3",
-                 "collimation": 80,
-                 "collimation_units" : "minutes ",
-                 "aperture_w" : 0.5,
-                 "aperture_h" : 0.5,
-                 "aperture_units" : "inches",
-                 "energy": [14.7, 30.5, 41, 60],
-                 "energyUnits": "meV",
-                 "flux": [1.63e7, 4.60e7, 6.07e7, 6.78e7],
-                 "fluxUnits": "n/(cm**2 * s)"
-             }
-         ];
+        var DEF_FLUX_UNITS   =      "n/(cm**2 * s)";
+        var DEF_ENERGY_UNITS =      "meV";
+        var DEF_COLLIMATION_UNITS = "minutes";
+        var DEF_APERTURE_UNITS =    "inches";
+
+        $scope.createSeries = function(seriesObj){
+            // adds default series values to given object if not already specified.
+            var def_values = {
+                "energy": [],
+                "flux": [],
+                "collimation_units": DEF_COLLIMATION_UNITS,
+                "aperture_units": DEF_APERTURE_UNITS,
+                "energyUnits": DEF_ENERGY_UNITS,
+                "fluxUnits": DEF_FLUX_UNITS
+            };
+
+            for(var key in def_values) {
+                if (typeof seriesObj[key] === 'undefined') {
+                    seriesObj[key] = def_values[key];
+                } // else do not overwrite values already in seriesObj
+            }
+
+            return seriesObj;
+        };
+
+        $scope.series =[
+            $scope.createSeries({
+                "instrument": "neutron spectrometer 1",
+                "collimation": 80,
+                "aperture_w" : 0.5,
+                "aperture_h" : 0.5,
+                "energy": [13.5, 30.5, 41, 60],
+                "flux": [1.69e7, 3.97e7, 5.17e7, 4.11e7],
+            }),
+            $scope.createSeries({
+                "instrument": "neutron spectrometer 3",
+                "collimation": 80,
+                "aperture_w" : 0.5,
+                "aperture_h" : 0.5,
+                "energy": [14.7, 30.5, 41, 60],
+                "flux": [1.63e7, 4.60e7, 6.07e7, 6.78e7],
+            })
+        ];
 
         $scope.updateSeries = function(index){
             console.log("update series #" + index);
@@ -52,15 +70,15 @@ angular.module('c3GraphWidget', [
 
         $scope.addSeries = function(){
             console.log("adding new series");
-            $scope.series.push({
-                 "instrument": "inst " + $scope.series.length,
-                  "energy": [],
-                  "flux": [],
-            });
-            formatData();
-        }
+            $scope.series.push($scope.createSeries({
+                 "instrument": "inst " + $scope.series.length
+            }));
+            updateData();
+        };
 
-        var formatData = function() {
+        var updateData = function() {
+            // updates graph data using $scope.series
+            // converts to proper data format for c3
             var XS = {};
             var cols = [];
             for (var i = 0; i < $scope.series.length; i++) {
@@ -89,20 +107,20 @@ angular.module('c3GraphWidget', [
             };
             $scope.axis = {
                 x: {
-                    label: 'energy',
+                    label: 'energy [' + DEF_ENERGY_UNITS + ']',
                     tick: {
                         fit: false
                     }
                 },
                 y: {
-                    label: 'flux',
+                    label: 'flux [' + DEF_FLUX_UNITS + ']',
                     tick:{
                         format: format(".2s")
                     }
                 }
             };
         };
-        formatData();  // init format data
+        updateData();  // init format data
 
         $scope.addItem = function() {
             var newItemNo = $scope.series.length + 1;
