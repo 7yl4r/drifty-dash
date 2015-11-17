@@ -1,6 +1,6 @@
 {
     "name": "drifty-dash",
-    "version": "0.2.4",
+    "version": "0.2.5",
     "description": "Drifty's dashboard.",
     "repository": "https://github.com/7yl4r/drifty-dash",
     "dependencies": {
@@ -13,6 +13,7 @@
         "less": "~1.7.5",
         "browserify": "~9.0.3",
         "browserify-shim": "~3.8.3",
+        "babel-preset-es2015": "~6.1.18",
         "babelify":"git://github.com/babel/babelify.git#master",
         "angular": "~1.3.14",
         "coffeeify": "~1.0.0",
@@ -22,7 +23,7 @@
     "browserify": {
         "transform": [
             "browserify-shim",
-            ["babelify", { "blacklist": ["regenerator"] }]
+            ["babelify", { "presets": ["es2015"] }]
         ]
     },
     "browserify-shim": {
