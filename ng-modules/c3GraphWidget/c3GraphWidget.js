@@ -58,14 +58,14 @@ angular.module('c3GraphWidget', [
             console.log("update series #" + index);
             var text = document.getElementById("series-json-"+index).value;
             $scope.series[index] = JSON.parse(text);
-            formatData();
+            updateData();
         };
 
         $scope.removeSeries = function(index){
             console.log("del series #" + index);
             delete $scope.series[index];  // frees memory?
             $scope.series = $scope.series.slice(0,index).concat($scope.series.slice(index + 1));  // actual remove from array
-            formatData();
+            updateData();
         };
 
         $scope.addSeries = function(){
