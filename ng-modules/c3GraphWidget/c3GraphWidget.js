@@ -107,13 +107,13 @@ angular.module('c3GraphWidget', [
             };
             $scope.axis = {
                 x: {
-                    label: 'energy',
+                    label: 'energy [' + DEF_ENERGY_UNITS + ']',
                     tick: {
                         fit: false
                     }
                 },
                 y: {
-                    label: 'flux',
+                    label: 'flux [' + DEF_FLUX_UNITS + ']',
                     tick:{
                         format: format(".2s")
                     }
